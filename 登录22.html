@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,19 +48,20 @@
         }
     </style>
 </head>
-
 <body>
 <!-- 登录界面 -->
 <div id="login-page" class="glass-container">
     <h2 class="text-2xl font-bold text-white text-center mb-8">登录</h2>
-    <form id="login-form">
+    <form id="login-form" action="./login.php" method="post">
         <div class="mb-4">
-            <input type="text" id="login-username" class="input-field w-full p-3 rounded-md" placeholder="用户名">
+            <input type="text" id="login-username" name="username" class="input-field w-full p-3 rounded-md" placeholder="用户名">
         </div>
         <div class="mb-4">
-            <input type="password" id="login-password" class="input-field w-full p-3 rounded-md" placeholder="密码">
+            <input type="password" id="login-password" name="password" class="input-field w-full p-3 rounded-md" placeholder="密码">
         </div>
-        <button type="submit" class="btn bg-white text-blue-600 w-full p-3 rounded-md font-bold">登录</button>
+        <div class="mb-4">
+            <button type="submit" name="login" class="btn bg-white text-blue-600 w-full p-3 rounded-md font-bold">登录</button>
+        </div>
     </form>
     <p class="text-white text-center mt-4">
         没有账号？<a href="#" onclick="showRegisterPage()" class="text-blue-300 hover:underline">注册账号</a>
@@ -71,18 +71,17 @@
 <!-- 注册界面 -->
 <div id="register-page" class="glass-container hidden">
     <h2 class="text-2xl font-bold text-white text-center mb-8">注册</h2>
-    <form id="register-form">
+    <form id="register-form" action="denhlu.php" method="post">
         <div class="mb-4">
-            <input type="text" id="register-username" class="input-field w-full p-3 rounded-md" placeholder="用户名">
+            <input type="text" name="username" id="register-username" class="input-field w-full p-3 rounded-md" placeholder="用户名" required>
         </div>
         <div class="mb-4">
-            <input type="password" id="register-password" class="input-field w-full p-3 rounded-md" placeholder="密码">
+            <input type="password" name="password" id="register-password" class="input-field w-full p-3 rounded-md" placeholder="密码" required minlength="8">
         </div>
         <div class="mb-4">
-            <input type="password" id="register-confirm-password" class="input-field w-full p-3 rounded-md"
-                   placeholder="确认密码">
+            <input type="password" name="confirm_password" id="register-confirm-password" class="input-field w-full p-3 rounded-md" placeholder="确认密码" required minlength="8">
         </div>
-        <button type="submit" class="btn bg-white text-blue-600 w-full p-3 rounded-md font-bold">注册</button>
+        <button type="submit" name="reg" class="btn bg-white text-blue-600 w-full p-3 rounded-md font-bold">注册</button>
     </form>
     <p class="text-white text-center mt-4">
         已有账号？<a href="#" onclick="showLoginPage()" class="text-blue-300 hover:underline">登录</a>
@@ -90,8 +89,6 @@
 </div>
 
 <script>
-    const registeredUsers = [];
-
     function showRegisterPage() {
         document.getElementById('login-page').classList.add('hidden');
         document.getElementById('register-page').classList.remove('hidden');
@@ -104,38 +101,26 @@
 
     document.getElementById('login-form').addEventListener('submit', function (e) {
         e.preventDefault();
-        const username = document.getElementById('login-username').value;
-        const password = document.getElementById('login-password').value;
-        const user = registeredUsers.find(u => u.username === username && u.password === password);
-        if (user) {
-            alert('登录成功！');
-            // 跳转至拾贝集界面
-            window.location.href = '拾贝集.html';
-        } else {
-            alert('用户名或密码错误，请重试。');
-        }
+        // 这里可以添加实际的登录验证逻辑
+        // 现在简单模拟登录成功
+        alert('登录成功！');
+        // 跳转至拾贝集界面
+        window.location.href = '拾贝集.html';
     });
 
     document.getElementById('register-form').addEventListener('submit', function (e) {
         e.preventDefault();
         const password = document.getElementById('register-password').value;
         const confirmPassword = document.getElementById('register-confirm-password').value;
-        const username = document.getElementById('register-username').value;
         if (password === confirmPassword) {
-            const existingUser = registeredUsers.find(u => u.username === username);
-            if (existingUser) {
-                alert('该用户名已被注册，请选择其他用户名。');
-            } else {
-                registeredUsers.push({ username, password });
-                alert('注册成功！');
-                showLoginPage();
-            }
+            // 这里可以添加注册逻辑
+            alert('注册成功！');
+            // 注册成功后跳转到登录界面
+            showLoginPage();
         } else {
             alert('两次输入的密码不一致，请重新输入。');
         }
     });
 </script>
 </body>
-
 </html>
-    
