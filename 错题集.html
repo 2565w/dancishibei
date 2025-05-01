@@ -21,7 +21,6 @@
             padding-top: 80px;
         }
 
-        /* 抽屉导航样式 */
         #drawer-toggle {
             position: fixed;
             left: 30px;
@@ -72,7 +71,6 @@
             transform: translate10px);
         }
 
-        /* 主内容容器 */
         .main-container {
             width: 70%;
             margin: 40px auto;
@@ -81,7 +79,6 @@
             gap: 30px;
         }
 
-        /* 错题卡片 */
         .error-card {
             background: rgba(255, 255, 255, 0.9);
             border-radius: 15px;
@@ -106,7 +103,6 @@
             margin: 8px 0;
         }
 
-        /* 响应式设计 */
         @media (max-width: 768px) {
             .main-container {
                 grid-template-columns: 1fr;
@@ -116,7 +112,6 @@
     </style>
 </head>
 <body>
-    <!-- 抽屉导航 -->
     <button id="drawer-toggle">☰</button>
     <div id="drawer-menu">
         <div class="menu-item" onclick="location.href='cet4.html'">📘 CET-4 四级</div>
@@ -125,9 +120,7 @@
         <div class="menu-item" onclick="history.back()">🔙 返回上级</div>
     </div>
 
-    <!-- 主内容 -->
     <div class="main-container">
-        <!-- 错题列表 -->
         <div>
             <h2 class="section-title">错题记录 Error Records</h2>
             <div id="error-list"></div>
@@ -135,18 +128,17 @@
     </div>
 
     <script>
-        // 渲染错题列表
         function renderErrors() {
             const errors = JSON.parse(localStorage.getItem('errorCollection')) || [];
             const container = document.getElementById('error-list');
 
-            // 空
+
             if (errors.length === 0) {
                 container.innerHTML = `<div class="error-card">📚 当前没有错题记录 ~ No error records</div>`;
                 return;
             }
 
-            // 简化版数据渲染
+
             container.innerHTML = errors.map(item => {
                 return `
                 <div class="error-card">
@@ -157,15 +149,14 @@
             }).join('');
         }
 
-        // 初始化
+        
         renderErrors();
 
-        // 抽屉交互
+        
         document.getElementById('drawer-toggle').addEventListener('click', () => {
             document.body.classList.toggle('drawer-open');
         });
 
-        // 添加实时监听
         window.addEventListener('storage', () => {
             renderErrors();
         });
