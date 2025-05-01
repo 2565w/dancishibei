@@ -51,7 +51,6 @@
 </head>
 
 <body>
-    <!-- 登录界面 -->
     <div id="login-page" class="glass-container">
         <h2 class="text-2xl font-bold text-white text-center mb-8">登录</h2>
         <form id="login-form">
@@ -70,7 +69,6 @@
         </p>
     </div>
 
-    <!-- 注册界面 -->
     <div id="register-page" class="glass-container hidden">
         <h2 class="text-2xl font-bold text-white text-center mb-8">注册</h2>
         <form id="register-form">
@@ -108,7 +106,6 @@
             const confirmPassword = document.getElementById('register-confirm-password').value;
 
             if (password === confirmPassword) {
-                // 保存用户数据到 localStorage
                 localStorage.setItem(username, password);
                 alert('注册成功！');
                 showLoginPage();
@@ -122,12 +119,10 @@
             const username = document.getElementById('login-username').value;
             const password = document.getElementById('login-password').value;
 
-            // 从 localStorage 获取用户数据
             const storedPassword = localStorage.getItem(username);
 
             if (storedPassword === password) {
                 alert('登录成功！');
-                // 跳转至拾贝集界面，确保路径正确
                 window.location.href = '拾贝集.html';
             } else {
                 alert('用户名或密码错误，请重新输入。');
