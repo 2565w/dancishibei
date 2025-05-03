@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>数据分析 - Error Analysis</title>
     <style>
-        /* 统一基础样式 */
+       
         * {
             box-sizing: border-box;
             margin: 0;
@@ -23,7 +23,7 @@
             padding-top: 80px;
         }
 
-        /* 抽屉导航 (Drawer Navigation) */
+       
         #drawer-toggle {
             position: fixed;
             left: 30px;
@@ -74,7 +74,7 @@
             transform: translateX(10px);
         }
 
-        /* 主内容容器 (Main Container) */
+       
         .main-container {
             width: 70%;
             margin: 40px auto;
@@ -126,7 +126,7 @@
 </head>
 
 <body>
-    <!-- 抽屉导航 (Drawer Navigation) -->
+    
     <button id="drawer-toggle">☰</button>
     <div id="drawer-menu">
         <div class="menu-item" onclick="location.href='cet4.html'">📘 CET-4 四级</div>
@@ -136,7 +136,7 @@
         <div class="menu-item" onclick="history.back()">🔙 返回上级</div>
     </div>
 
-    <!-- 主内容 -->
+   
     <div class="main-container">
         <h2 class="section-title">错题集数据分析</h2>
         <div class="analysis-item">
@@ -170,7 +170,7 @@
     </div>
 
     <script>
-        // 渲染数据分析结果
+       
         function renderAnalysis() {
             const errors = JSON.parse(localStorage.getItem('errorCollection')) || [];
             const totalErrorsElem = document.getElementById('total-errors');
@@ -180,10 +180,10 @@
             const learningSuggestionsElem = document.getElementById('learning-suggestions');
             const forgettingCurveAdviceElem = document.getElementById('forgetting-curve-advice');
 
-            // 错题总数
+            
             totalErrorsElem.textContent = `共有 ${errors.length} 道错题`;
 
-            // 各分类错题数量
+            
             const categoryCount = {};
             errors.forEach(error => {
                 const category = error.category || '未分类';
@@ -192,7 +192,7 @@
             const categoryList = Object.entries(categoryCount).map(([category, count]) => `${category}: ${count} 道`).join(', ');
             categoryErrorsElem.textContent = categoryList;
 
-            // 最近错题时间
+            
             if (errors.length > 0) {
                 const latestError = errors.reduce((prev, current) => {
                     return new Date(prev.timestamp) > new Date(current.timestamp) ? prev : current;
@@ -202,7 +202,7 @@
                 latestErrorTimeElem.textContent = '暂无错题记录';
             }
 
-            // 用户薄弱点分析
+            
             if (Object.keys(categoryCount).length > 0) {
                 const sortedCategories = Object.entries(categoryCount).sort((a, b) => b[1] - a[1]);
                 const weakPoints = sortedCategories.map(([category, count]) => `${category}（${count} 道错题）`).join(', ');
@@ -211,7 +211,7 @@
                 weakPointsElem.textContent = '暂无错题记录，继续保持！';
             }
 
-            // 学习建议
+           
             if (Object.keys(categoryCount).length > 0) {
                 const topWeakCategory = Object.entries(categoryCount).sort((a, b) => b[1] - a[1])[0][0];
                 let suggestion = '';
@@ -229,7 +229,7 @@
                 learningSuggestionsElem.textContent = '继续保持当前的学习状态，不断巩固知识！';
             }
 
-            // 遗忘曲线学习建议
+           
             if (errors.length > 0) {
                 const today = new Date();
                 const recentErrors = errors.filter(error => {
@@ -257,7 +257,7 @@
             }
         }
 
-        // 绘制遗忘曲线图
+       
         function drawForgettingCurve() {
             const ctx = document.getElementById('forgetting-curve-chart').getContext('2d');
             const forgettingCurveChart = new Chart(ctx, {
@@ -292,11 +292,11 @@
             });
         }
 
-        // 初始化执行
+       
         renderAnalysis();
         drawForgettingCurve();
 
-        // 抽屉交互
+       
         document.getElementById('drawer-toggle').addEventListener('click', () => {
             document.body.classList.toggle('drawer-open');
         });
