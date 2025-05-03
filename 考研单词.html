@@ -59,20 +59,20 @@
         .menu-item {
             padding: 18px;
             margin: 12px 0;
-            background: rgba(33, 150, 243, 0.1); /* 蓝色主题 */
+            background: rgba(33, 150, 243, 0.1); 
             border-radius: 12px;
-            color: #2196F3; /* 蓝色主题 */
+            color: #2196F3; 
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         .menu-item:hover {
-            background: rgba(33, 150, 243, 0.2); /* 蓝色主题 */
+            background: rgba(33, 150, 243, 0.2); 
             transform: translateX(10px);
         }
 
-        /* 搜索框样式 */
+       
         #search-bar {
             width: 60%;
             height: 60px;
@@ -82,7 +82,7 @@
             display: flex;
             align-items: center;
             padding: 0 30px;
-            box-shadow: 0 8px 32px rgba(33, 150, 243, 0.1); /* 蓝色主题 */
+            box-shadow: 0 8px 32px rgba(33, 150, 243, 0.1); 
             transition: all 0.3s ease;
         }
 
@@ -96,15 +96,15 @@
             border: none;
             background: transparent;
             font-size: 20px;
-            color: #2196F3; /* 蓝色主题 */
+            color: #2196F3; 
             padding-left: 15px;
         }
 
         #search-input::placeholder {
-            color: #90CAF9; /* 浅蓝色 */
+            color: #90CAF9;
         }
 
-        /* 卡片容器 */
+        
         #card-container {
             overflow: hidden;
             position: relative;
@@ -120,7 +120,7 @@
             transition: transform 0.6s ease-in-out;
         }
 
-        /* 单词卡片 */
+        
         .word-card {
             margin-right: 2%;
             box-sizing: border-box;
@@ -133,7 +133,7 @@
             margin-right: 2%;
         }
 
-        /* 卡片内容样式 */
+       
         .card-header {
             display: flex;
             justify-content: space-between;
@@ -143,13 +143,13 @@
 
         .word {
             font-size: 3.8rem;
-            color: #2196F3; /* 蓝色主题 */
-            text-shadow: 2px 2px 4px rgba(33, 150, 243, 0.2); /* 蓝色主题 */
+            color: #2196F3; 
+            text-shadow: 2px 2px 4px rgba(33, 150, 243, 0.2); 
         }
 
         .phonetic {
             font-size: 1.8rem;
-            color: #64B5F6; /* 浅蓝色 */
+            color: #64B5F6;
         }
 
         .definition {
@@ -162,14 +162,14 @@
 
         .example {
             font-size: 1.4rem;
-            color: #2196F3; /* 蓝色主题 */
+            color: #2196F3; 
             padding: 20px;
-            background: rgba(33, 150, 243, 0.05); /* 蓝色主题 */
+            background: rgba(33, 150, 243, 0.05);
             border-radius: 15px;
-            border-left: 4px solid #2196F3; /* 蓝色主题 */
+            border-left: 4px solid #2196F3;
         }
 
-        /* 导航按钮容器 */
+       
         #nav-buttons {
             position: absolute;
             bottom: 20px;
@@ -184,21 +184,21 @@
             width: 50px;
             height: 50px;
             border: none;
-            background: rgba(33, 150, 243, 0.9); /* 蓝色主题 */
+            background: rgba(33, 150, 243, 0.9); 
             border-radius: 50%;
             color: white;
             font-size: 24px;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3); /* 蓝色主题 */
+            box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
             transition: all 0.3s ease;
         }
 
         .nav-btn:hover {
-            background: #1976D2; /* 深蓝色 */
+            background: #1976D2; 
             transform: scale(1.1);
         }
 
-        /* 励志话语容器 */
+      
         #motivational-quote {
             position: absolute;
             bottom: 100px;
@@ -211,7 +211,7 @@
             margin: 0 auto;
         }
 
-        /* 错题集按钮美化 */
+       
         .error-btn {
             align-self: flex-end;
             padding: 12px 25px;
@@ -232,7 +232,7 @@
             box-shadow: 0 6px 15px rgba(33, 150, 243, 0.4);
         }
 
-        /* 加载提示 */
+       
         #loading {
             position: fixed;
             top: 50%;
@@ -242,7 +242,7 @@
     </style>
 </head>
 <body>
-    <!-- 修复后的抽屉导航 -->
+    
     <button id="drawer-toggle">☰</button>
     <div id="drawer-menu">
         <div class="menu-item" onclick="goToErrorCollection()">📚 错题集</div>
@@ -250,15 +250,15 @@
         <div class="menu-item" onclick="location.href='学习笔记.html'">📒 学习笔记</div>
         <div class="menu-item" onclick="goToMainPage()">⚙️ 返回</div>
     </div>
-    <!-- 搜索框 -->
+    
     <div id="search-bar">
         <input type="text" id="search-input" placeholder="输入要查询的单词...">
         <span style="color: #2196F3; font-size: 24px;">🔍</span>
     </div>
 
-    <!-- 卡片容器 -->
+    
     <div id="card-container">
-        <!-- 导航按钮 -->
+        
         <div id="nav-buttons">
             <button class="nav-btn" id="prev-btn">❮</button>
             <button class="nav-btn" id="next-btn">❯</button>
@@ -266,16 +266,16 @@
         <div class="word-cards-wrapper"></div>
     </div>
 
-    <!-- 励志话语 -->
+    
     <div id="motivational-quote"></div>
 
-    <!-- 加载提示 -->
+   
     <div id="loading">
         数据加载中...
     </div>
 
     <script>
-        // 在 initApp() 之前或之后添加：
+        
 function goToErrorCollection() {
     location.href = "错题集.html";
 }
@@ -285,21 +285,21 @@ function goToDataAnalysis() {
 }
 
 function goToMainPage() {
-    location.href = "拾贝集.html";  // 或其他主页路径
+    location.href = "拾贝集.html";  
 }
         const CONFIG = {
-            dataURL: '999/5-考研-顺序.json',  // 修改为实际的 JSON 文件路径
+            dataURL: '999/5-考研-顺序.json',  
             itemsPerPage: 1
         };
 
-        // 状态管理
+       
         let appState = {
             allWords: [],
             filteredWords: [],
             currentIndex: 0
         };
 
-        const searchSound = new Audio('search_sound.mp3'); // 替换为实际的音效文件路径
+        const searchSound = new Audio('search_sound.mp3'); 
 
         const randomPlaceholders = [
             "试试输入个神秘单词吧！",
@@ -312,15 +312,15 @@ function goToMainPage() {
             document.getElementById('search-input').placeholder = randomPlaceholders[randomIndex];
         }
 
-        // 核心功能
+        
         async function initApp() {
             try {
-                // 加载数据
+                
                 const response = await fetch(CONFIG.dataURL);
                 if (!response.ok) throw new Error(`HTTP错误 ${response.status}`);
                 appState.allWords = await response.json();
 
-                // 初始化界面
+              
                 appState.filteredWords = [...appState.allWords];
                 renderCards();
                 setupEventListeners();
@@ -335,7 +335,7 @@ function goToMainPage() {
             }
         }
 
-        // 渲染卡片
+        
         function renderCards() {
             const wrapper = document.querySelector('.word-cards-wrapper');
             wrapper.innerHTML = appState.filteredWords.map((word, index) => {
@@ -355,7 +355,7 @@ function goToMainPage() {
             updateCardPosition();
         }
 
-        // 搜索功能
+        
         function handleSearch() {
             searchSound.play();
             const query = document.getElementById('search-input').value.toLowerCase();
@@ -367,18 +367,17 @@ function goToMainPage() {
             renderCards();
         }
 
-        // 卡片导航
-        // 修改卡片位置更新函数
+       
         function updateCardPosition() {
             const wrapper = document.querySelector('.word-cards-wrapper');
             const cardWidth = document.querySelector('.word-card').offsetWidth;
-            const offset = -appState.currentIndex * (cardWidth + cardWidth * 0.02); // 计算实际偏移量
+            const offset = -appState.currentIndex * (cardWidth + cardWidth * 0.02); 
             wrapper.style.transform = `translateX(${offset}px)`;
         }
 
-        // 事件监听
+        
         function setupEventListeners() {
-            // 导航按钮
+            
             document.getElementById('next-btn').addEventListener('click', () => {
                 appState.currentIndex = (appState.currentIndex + 1) % appState.filteredWords.length;
                 updateCardPosition();
@@ -389,18 +388,18 @@ function goToMainPage() {
                 updateCardPosition();
             });
 
-            // 搜索框功能
+            
             document.getElementById('search-input').addEventListener('input', handleSearch);
 
-            // 抽屉菜单交互
+            
             document.getElementById('drawer-toggle').addEventListener('click', () => {
                 document.body.classList.toggle('drawer-open');
             });
         }
 
-        // 错题集功能
+        
         function addToErrorCollection(btn) {
-            // 这里可以添加错题集的具体逻辑
+            
         }
 
         initApp();
