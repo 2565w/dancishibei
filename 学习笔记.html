@@ -20,7 +20,7 @@
             padding-top: 80px;
         }
 
-        /* 抽屉导航样式 */
+        
         #drawer-toggle {
             position: fixed;
             left: 30px;
@@ -71,14 +71,14 @@
             transform: translateX(10px);
         }
 
-        /* 笔记容器 */
+       
         .notes-container {
             width: 70%;
             margin: 0 auto;
             padding: 30px;
         }
 
-        /* 笔记标题 */
+        
         .notes-title {
             text-align: center;
             font-size: 2.5rem;
@@ -87,7 +87,7 @@
             text-shadow: 2px 2px 4px rgba(255, 107, 107, 0.2);
         }
 
-        /* 笔记编辑器 */
+        
         .note-editor {
             width: 100%;
             min-height: 200px;
@@ -106,7 +106,7 @@
             box-shadow: 0 12px 30px rgba(255, 107, 107, 0.2);
         }
 
-        /* 新增笔记按钮 */
+        
         .add-note-btn {
             position: fixed;
             right: 50px;
@@ -130,7 +130,7 @@
     </style>
 </head>
 <body>
-    <!-- 抽屉导航 -->
+    
     <button id="drawer-toggle">☰</button>
     <div id="drawer-menu">
         <div class="menu-item" onclick="location.href='cet4.html'">📖 四级词汇</div>
@@ -139,20 +139,20 @@
         <div class="menu-item" onclick="location.href='拾贝集.html'">🏠 返回首页</div>
     </div>
 
-    <!-- 笔记容器 -->
+    
     <div class="notes-container">
         <h1 class="notes-title">📝 橙白学习笔记</h1>
         <div id="notes-list"></div>
     </div>
 
-    <!-- 新增笔记按钮 -->
+    
     <button class="add-note-btn">+</button>
 
     <script>
-        // 初始化本地存储
+        
         let notes = JSON.parse(localStorage.getItem('studyNotes')) || [];
 
-        // 创建新笔记
+        
         function createNoteElement(content = '', index) {
             const editor = document.createElement('textarea');
             editor.className = 'note-editor';
@@ -160,7 +160,7 @@
             editor.placeholder = '写下你的学习心得...';
             editor.dataset.index = index;
             
-            // 实时保存
+            
             editor.addEventListener('input', (e) => {
                 notes[e.target.dataset.index] = e.target.value;
                 localStorage.setItem('studyNotes', JSON.stringify(notes));
@@ -169,7 +169,7 @@
             return editor;
         }
 
-        // 渲染笔记
+        
         function renderNotes() {
             const container = document.getElementById('notes-list');
             container.innerHTML = '';
@@ -178,7 +178,7 @@
             });
         }
 
-        // 添加新笔记
+        
         document.querySelector('.add-note-btn').addEventListener('click', () => {
             notes.push('');
             localStorage.setItem('studyNotes', JSON.stringify(notes));
@@ -186,12 +186,12 @@
             window.scrollTo(0, document.body.scrollHeight);
         });
 
-        // 抽屉交互
+       
         document.getElementById('drawer-toggle').addEventListener('click', () => {
             document.body.classList.toggle('drawer-open');
         });
 
-        // 初始化渲染
+      
         renderNotes();
     </script>
 </body>
